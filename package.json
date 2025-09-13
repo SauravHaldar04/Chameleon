@@ -2,7 +2,6 @@
   "name": "chameleon",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-slot": "^1.2.3",
