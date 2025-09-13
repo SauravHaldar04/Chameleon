@@ -17,7 +17,7 @@ export const CreativeDetail: React.FC = () => {
   if (!creative) {
     return (
       <div className="text-center py-12">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Creative not found</h2>
+        <h2 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">Creative not found</h2>
         <Button onClick={() => navigate('/creatives')} className="mt-4">
           Back to Library
         </Button>
@@ -28,13 +28,13 @@ export const CreativeDetail: React.FC = () => {
   const getStatusVariant = (status: string) => {
     switch (status) {
       case 'Approved':
-        return 'success' as const;
+        return 'default' as const;
       case 'Pending':
-        return 'warning' as const;
+        return 'secondary' as const;
       case 'Rejected':
-        return 'error' as const;
+        return 'destructive' as const;
       default:
-        return 'neutral' as const;
+        return 'outline' as const;
     }
   };
 
@@ -56,8 +56,8 @@ export const CreativeDetail: React.FC = () => {
             <ArrowLeftIcon className="h-5 w-5" />
           </Button>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{creative.name}</h1>
-            <p className="text-gray-600 dark:text-gray-400">{creative.advertiser}</p>
+            <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">{creative.name}</h1>
+            <p className="text-secondary-600 dark:text-secondary-400">{creative.advertiser}</p>
           </div>
           <Badge variant={getStatusVariant(creative.status)}>
             Policy Check: {creative.status}
@@ -68,9 +68,9 @@ export const CreativeDetail: React.FC = () => {
       {/* Tabs */}
       <Tabs defaultValue="chameleon" className="w-full">
         <TabsList>
-          <TabsTrigger value="chameleon">Chameleon Contextual Preview</TabsTrigger>
-          <TabsTrigger value="accessibility">AdForAll Accessibility Report</TabsTrigger>
-          <TabsTrigger value="original">Original Assets & Guidelines</TabsTrigger>
+          <TabsTrigger value="chameleon">AI Creative Generation</TabsTrigger>
+          <TabsTrigger value="accessibility">Alt Text & Captioning</TabsTrigger>
+          <TabsTrigger value="original">Original Assets</TabsTrigger>
         </TabsList>
 
         {/* Tab 1: Chameleon Contextual Preview */}
@@ -89,11 +89,11 @@ export const CreativeDetail: React.FC = () => {
                     className={`w-full text-left p-3 rounded-lg transition-colors ${
                       selectedContext === index 
                         ? 'bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-800' 
-                        : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border-2 border-transparent'
+                        : 'bg-secondary-50 dark:bg-secondary-800 hover:bg-secondary-100 dark:hover:bg-secondary-700 border-2 border-transparent'
                     }`}
                   >
-                    <div className="font-medium text-gray-900 dark:text-gray-100">{variation.context}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">AI-Generated Variation</div>
+                    <div className="font-medium text-secondary-900 dark:text-secondary-100">{variation.context}</div>
+                    <div className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">AI-Generated Variation</div>
                   </button>
                 ))}
               </CardContent>
@@ -109,7 +109,7 @@ export const CreativeDetail: React.FC = () => {
                 </CardHeader>
                 <CardContent>
                     {/* Image Preview */}
-                    <div className="aspect-video rounded-lg mb-6 overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                    <div className="aspect-video rounded-lg mb-6 overflow-hidden bg-secondary-100 dark:bg-secondary-800 flex items-center justify-center">
                     {creative.contextualVariations[selectedContext]?.generatedImageUrl ? (
                       <img 
                       src={creative.contextualVariations[selectedContext].generatedImageUrl} 
@@ -120,10 +120,10 @@ export const CreativeDetail: React.FC = () => {
                       <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 w-full h-full flex items-center justify-center">
                       <div className="text-center">
                         <div className="text-4xl mb-4">🎨</div>
-                        <div className="text-lg font-medium text-gray-700 dark:text-gray-300">
+                        <div className="text-lg font-medium text-secondary-700 dark:text-secondary-300">
                         AI-Generated Variation
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                        <div className="text-sm text-secondary-500 dark:text-secondary-400 mt-2">
                         {creative.contextualVariations[selectedContext]?.context}
                         </div>
                       </div>
@@ -132,12 +132,12 @@ export const CreativeDetail: React.FC = () => {
                     </div>
 
                   {/* Generated Copy */}
-                  <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                  <div className="bg-secondary-50 dark:bg-secondary-800 rounded-lg p-4">
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-medium text-gray-900 dark:text-gray-100">AI-Generated Copy</h4>
-                      <Badge variant="info" size="sm">Generated</Badge>
+                      <h4 className="font-medium text-secondary-900 dark:text-secondary-100">AI-Generated Copy</h4>
+                      <Badge variant="secondary">Generated</Badge>
                     </div>
-                    <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                    <p className="text-secondary-700 dark:text-secondary-300 text-lg leading-relaxed">
                       "{creative.contextualVariations[selectedContext]?.generatedCopy}"
                     </p>
                   </div>
@@ -162,9 +162,9 @@ export const CreativeDetail: React.FC = () => {
                 <CardTitle>Alt Text Generation</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="bg-gray-50 rounded-lg p-4">
+                <div className="bg-secondary-50 dark:bg-secondary-800 rounded-lg p-4">
                   <div className="flex justify-between items-start mb-2">
-                    <h4 className="font-medium text-gray-900">Generated Alt Text</h4>
+                    <h4 className="font-medium text-secondary-900 dark:text-secondary-100">Generated Alt Text</h4>
                     <Button
                       size="sm"
                       variant="outline"
@@ -174,7 +174,7 @@ export const CreativeDetail: React.FC = () => {
                       Copy
                     </Button>
                   </div>
-                  <p className="text-gray-700">{creative.accessibilityPackage.altText}</p>
+                  <p className="text-secondary-700 dark:text-secondary-300">{creative.accessibilityPackage.altText}</p>
                 </div>
               </CardContent>
             </Card>
@@ -186,13 +186,13 @@ export const CreativeDetail: React.FC = () => {
                   <CardTitle>Audio Description</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                  <div className="bg-secondary-50 dark:bg-secondary-800 rounded-lg p-4">
                     <div className="flex items-center space-x-4">
                       <Button variant="outline" size="sm">
                         <PlayIcon className="h-4 w-4 mr-2" />
                         Play Audio Description
                       </Button>
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                      <span className="text-sm text-secondary-600 dark:text-secondary-400">
                         Generated audio description for visually impaired users
                       </span>
                     </div>
@@ -210,15 +210,15 @@ export const CreativeDetail: React.FC = () => {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="font-medium text-gray-900 dark:text-gray-100">Contrast Score</h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">WCAG 2.1 AA Compliance</p>
+                      <h4 className="font-medium text-secondary-900 dark:text-secondary-100">Contrast Score</h4>
+                      <p className="text-sm text-secondary-600 dark:text-secondary-400">WCAG 2.1 AA Compliance</p>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                      <div className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">
                         {creative.accessibilityPackage.colorContrastReport.score}
                       </div>
                       <Badge 
-                        variant={creative.accessibilityPackage.colorContrastReport.status === 'Pass' ? 'success' : 'error'}
+                        variant={creative.accessibilityPackage.colorContrastReport.status === 'Pass' ? 'default' : 'destructive'}
                       >
                         {creative.accessibilityPackage.colorContrastReport.status}
                       </Badge>
@@ -238,7 +238,7 @@ export const CreativeDetail: React.FC = () => {
                     </div>
                   )}
 
-                  <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="pt-4 border-t border-border-light dark:border-border-dark">
                     <Button variant="outline" size="sm">
                       View Full Accessibility Report
                     </Button>
@@ -259,7 +259,7 @@ export const CreativeDetail: React.FC = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center">
+                  <div className="aspect-video bg-secondary-100 dark:bg-secondary-800 rounded-lg overflow-hidden flex items-center justify-center">
                     {creative.seedAd.url ? (
                       <img 
                         src={creative.seedAd.url} 
@@ -272,16 +272,16 @@ export const CreativeDetail: React.FC = () => {
                           <div className="text-3xl mb-2">
                             {creative.seedAd.type === 'video' ? '🎬' : '🖼️'}
                           </div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">
+                          <div className="text-sm text-secondary-600 dark:text-secondary-400">
                             Original {creative.seedAd.type}
                           </div>
                         </div>
                       </div>
                     )}
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
-                    <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-2">Original Copy</h4>
-                    <p className="text-gray-700 dark:text-gray-300">"{creative.seedAd.copy}"</p>
+                  <div className="bg-secondary-50 dark:bg-secondary-800 rounded-lg p-4">
+                    <h4 className="font-medium text-secondary-900 dark:text-secondary-100 mb-2">Original Copy</h4>
+                    <p className="text-secondary-700 dark:text-secondary-300">"{creative.seedAd.copy}"</p>
                   </div>
                 </div>
               </CardContent>

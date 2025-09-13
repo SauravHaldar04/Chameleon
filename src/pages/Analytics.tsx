@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
-import { Select } from '../components/ui/Input';
+import { Select } from '../components/ui/Select';
 import { Badge } from '../components/ui/Badge';
 import { analyticsData, abTestResults } from '../data/analytics';
 import { useTheme } from '../contexts/ThemeContext';
@@ -52,21 +52,25 @@ export const Analytics: React.FC = () => {
 
       {/* Filters */}
       <Card className="animate-slideIn animation-delay-100">
-        <CardContent className="flex flex-wrap gap-4">
-          <Select
-            label="Date Range"
-            options={filterOptions}
-            value={dateRange}
-            onChange={(e) => setDateRange(e.target.value)}
-            className="w-48"
-          />
-          <Select
-            label="Campaign"
-            options={campaignOptions}
-            value={campaignFilter}
-            onChange={(e) => setCampaignFilter(e.target.value)}
-            className="w-48"
-          />
+        <CardContent className="flex flex-wrap gap-4 items-end">
+          <div>
+            <label className="block text-sm font-medium text-foreground mb-2">Date Range</label>
+            <Select
+              options={filterOptions}
+              value={dateRange}
+              onChange={(e) => setDateRange(e.target.value)}
+              className="w-48"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-foreground mb-2">Campaign</label>
+            <Select
+              options={campaignOptions}
+              value={campaignFilter}
+              onChange={(e) => setCampaignFilter(e.target.value)}
+              className="w-48"
+            />
+          </div>
         </CardContent>
       </Card>
 
@@ -184,50 +188,49 @@ export const Analytics: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-4 font-medium text-gray-500 text-sm">Context</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-500 text-sm">Variation A</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-500 text-sm">Variation B</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-500 text-sm">Winner</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-500 text-sm">Confidence</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-500 text-sm">Duration</th>
+                <tr className="border-b border-border-light dark:border-border-dark">
+                  <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Context</th>
+                  <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Variation A</th>
+                  <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Variation B</th>
+                  <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Winner</th>
+                  <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Confidence</th>
+                  <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Duration</th>
                 </tr>
               </thead>
               <tbody>
                 {abTestResults.map((test) => (
-                  <tr key={test.id} className="border-b border-gray-100 hover:bg-gray-50">
+                  <tr key={test.id} className="border-b border-border-light dark:border-border-dark hover:bg-secondary-50 dark:hover:bg-secondary-800/50">
                     <td className="py-3 px-4">
-                      <div className="font-medium text-gray-900">{test.context}</div>
+                      <div className="font-medium text-secondary-900 dark:text-secondary-100">{test.context}</div>
                     </td>
                     <td className="py-3 px-4">
                       <div className="text-sm">
-                        <div className="font-medium">{test.variationA.name}</div>
-                        <div className="text-gray-600">
+                        <div className="font-medium text-secondary-900 dark:text-secondary-100">{test.variationA.name}</div>
+                        <div className="text-secondary-600 dark:text-secondary-400">
                           CTR: {test.variationA.ctr}% | Conv: {test.variationA.conversions}
                         </div>
                       </div>
                     </td>
                     <td className="py-3 px-4">
                       <div className="text-sm">
-                        <div className="font-medium">{test.variationB.name}</div>
-                        <div className="text-gray-600">
+                        <div className="font-medium text-secondary-900 dark:text-secondary-100">{test.variationB.name}</div>
+                        <div className="text-secondary-600 dark:text-secondary-400">
                           CTR: {test.variationB.ctr}% | Conv: {test.variationB.conversions}
                         </div>
                       </div>
                     </td>
                     <td className="py-3 px-4">
                       <Badge 
-                        variant={test.winner === 'B' ? 'success' : 'info'}
-                        size="sm"
+                        variant={test.winner === 'B' ? 'default' : 'secondary'}
                       >
                         Variation {test.winner}
                       </Badge>
                     </td>
                     <td className="py-3 px-4">
-                      <span className="font-medium text-gray-900">{test.confidence}%</span>
+                      <span className="font-medium text-secondary-900 dark:text-secondary-100">{test.confidence}%</span>
                     </td>
                     <td className="py-3 px-4">
-                      <span className="text-gray-600">{test.testDuration}</span>
+                      <span className="text-secondary-600 dark:text-secondary-400">{test.testDuration}</span>
                     </td>
                   </tr>
                 ))}

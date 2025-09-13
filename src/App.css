@@ -1,6 +1,15 @@
 .App {
   text-align: center;
 }
+/* styles.css or global.css */
+.glow-text {
+  color: #eaffea; /* soft greenish white */
+  text-shadow:
+    0 0 8px #adffb3,
+    0 0 16px #baffc4,
+    0 0 24px #c5ffd0,
+    0 0 40px #d6ffe0;
+}
 
 .App-logo {
   height: 40vmin;

@@ -4,11 +4,11 @@ import { BellIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { currentUser } from '../../data/user';
 
 const pageNames: Record<string, string> = {
-  '/dashboard': 'Dashboard',
-  '/campaigns': 'Campaigns',
-  '/creatives': 'Creative Library',
-  '/analytics': 'Analytics',
-  '/settings': 'Settings'
+  '/app/dashboard': 'Dashboard',
+  '/app/campaigns': 'Campaigns',
+  '/app/creatives': 'Creative Library',
+  '/app/analytics': 'Analytics',
+  '/app/settings': 'Settings'
 };
 
 export const Navbar: React.FC = () => {

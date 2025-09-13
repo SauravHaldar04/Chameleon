@@ -16,13 +16,13 @@ export const CreativeLibrary: React.FC = () => {
   const getStatusVariant = (status: string) => {
     switch (status) {
       case 'Approved':
-        return 'success' as const;
+        return 'default' as const;
       case 'Pending':
-        return 'warning' as const;
+        return 'secondary' as const;
       case 'Rejected':
-        return 'error' as const;
+        return 'destructive' as const;
       default:
-        return 'neutral' as const;
+        return 'outline' as const;
     }
   };
 
@@ -54,7 +54,7 @@ export const CreativeLibrary: React.FC = () => {
         </div>
         <div className="flex items-center space-x-4">
           <Button 
-            onClick={() => alert('Upload new creative functionality')}
+            onClick={() => navigate('/app/creatives/upload')}
             className="flex items-center shadow-lg"
           >
             <PlusIcon className="h-5 w-5 mr-2" />
@@ -86,8 +86,8 @@ export const CreativeLibrary: React.FC = () => {
                   </p>
                 </div>
                 <Badge 
-                  variant={creative.status === 'Approved' ? 'success' : 
-                          creative.status === 'Pending' ? 'warning' : 'error'}
+                  variant={creative.status === 'Approved' ? 'default' : 
+                          creative.status === 'Pending' ? 'secondary' : 'destructive'}
                 >
                   {creative.status}
                 </Badge>
@@ -158,7 +158,7 @@ export const CreativeLibrary: React.FC = () => {
                   </p>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Badge variant={getStatusVariant(selectedCreative.status)} size="lg">
+                  <Badge variant={getStatusVariant(selectedCreative.status)}>
                     {selectedCreative.status}
                   </Badge>
                   <Button 
@@ -410,7 +410,7 @@ export const CreativeLibrary: React.FC = () => {
                         Color Contrast Score
                       </h4>
                       <Badge 
-                        variant={selectedCreative.accessibilityPackage.colorContrastReport.status === 'Pass' ? 'success' : 'error'}
+                        variant={selectedCreative.accessibilityPackage.colorContrastReport.status === 'Pass' ? 'default' : 'destructive'}
                       >
                         {selectedCreative.accessibilityPackage.colorContrastReport.status}
                       </Badge>

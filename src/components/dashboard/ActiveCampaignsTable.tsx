@@ -33,42 +33,42 @@ export const ActiveCampaignsTable: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="text-left py-3 px-4 font-medium text-gray-500 dark:text-gray-400 text-sm">Campaign</th>
-                <th className="text-left py-3 px-4 font-medium text-gray-500 dark:text-gray-400 text-sm">Status</th>
-                <th className="text-left py-3 px-4 font-medium text-gray-500 dark:text-gray-400 text-sm">Budget</th>
-                <th className="text-left py-3 px-4 font-medium text-gray-500 dark:text-gray-400 text-sm">Impressions</th>
-                <th className="text-left py-3 px-4 font-medium text-gray-500 dark:text-gray-400 text-sm">CTR</th>
-                <th className="text-left py-3 px-4 font-medium text-gray-500 dark:text-gray-400 text-sm">Conversions</th>
+              <tr className="border-b border-border-light dark:border-border-dark">
+                <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Campaign</th>
+                <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Status</th>
+                <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Budget</th>
+                <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Impressions</th>
+                <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">CTR</th>
+                <th className="text-left py-3 px-4 font-medium text-secondary-500 dark:text-secondary-400 text-sm">Conversions</th>
               </tr>
             </thead>
             <tbody>
               {activeCampaigns.map((campaign) => (
-                <tr key={campaign.id} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                <tr key={campaign.id} className="border-b border-border-light dark:border-border-dark hover:bg-secondary-50 dark:hover:bg-secondary-800/50">
                   <td className="py-3 px-4">
                     <div>
-                      <div className="font-medium text-gray-900 dark:text-gray-100">{campaign.name}</div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">{campaign.advertiser}</div>
+                      <div className="font-medium text-secondary-900 dark:text-secondary-100">{campaign.name}</div>
+                      <div className="text-sm text-secondary-500 dark:text-secondary-400">{campaign.advertiser}</div>
                     </div>
                   </td>
                   <td className="py-3 px-4">
-                    <Badge variant="success" size="sm">
+                    <Badge variant="default">
                       {campaign.status}
                     </Badge>
                   </td>
                   <td className="py-3 px-4">
                     <div className="text-sm">
-                      <div className="font-medium text-gray-900 dark:text-gray-100">{formatCurrency(campaign.spent)}</div>
-                      <div className="text-gray-500 dark:text-gray-400">of {formatCurrency(campaign.budget)}</div>
+                      <div className="font-medium text-secondary-900 dark:text-secondary-100">{formatCurrency(campaign.spent)}</div>
+                      <div className="text-secondary-500 dark:text-secondary-400">of {formatCurrency(campaign.budget)}</div>
                     </div>
                   </td>
-                  <td className="py-3 px-4 font-medium text-gray-900 dark:text-gray-100">
+                  <td className="py-3 px-4 font-medium text-secondary-900 dark:text-secondary-100">
                     {formatNumber(campaign.impressions)}
                   </td>
-                  <td className="py-3 px-4 font-medium text-gray-900 dark:text-gray-100">
+                  <td className="py-3 px-4 font-medium text-secondary-900 dark:text-secondary-100">
                     {campaign.ctr.toFixed(1)}%
                   </td>
-                  <td className="py-3 px-4 font-medium text-gray-900 dark:text-gray-100">
+                  <td className="py-3 px-4 font-medium text-secondary-900 dark:text-secondary-100">
                     {campaign.conversions}
                   </td>
                 </tr>

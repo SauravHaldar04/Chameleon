@@ -9,8 +9,8 @@ export const Settings: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="animate-slideIn">
-        <h2 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">Settings</h2>
-        <p className="text-secondary-600 dark:text-secondary-400 mt-1">Manage your account and platform preferences</p>
+        <h2 className="text-2xl font-bold text-secondary-900 dark:text-black">Settings</h2>
+        <p className="text-secondary-600 dark:text-secondary-700 mt-1">Manage your account and platform preferences</p>
       </div>
 
       {/* User Profile */}
@@ -20,27 +20,35 @@ export const Settings: React.FC = () => {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Input
-              label="Full Name"
-              defaultValue={currentUser.name}
-              placeholder="Enter your full name"
-            />
-            <Input
-              label="Email Address"
-              type="email"
-              defaultValue={currentUser.email}
-              placeholder="Enter your email"
-            />
-            <Input
-              label="Company"
-              defaultValue={currentUser.company}
-              placeholder="Enter your company name"
-            />
-            <Input
-              label="Role"
-              defaultValue={currentUser.role}
-              placeholder="Enter your role"
-            />
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
+              <Input
+                defaultValue={currentUser.name}
+                placeholder="Enter your full name"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">Email Address</label>
+              <Input
+                type="email"
+                defaultValue={currentUser.email}
+                placeholder="Enter your email"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">Company</label>
+              <Input
+                defaultValue={currentUser.company}
+                placeholder="Enter your company name"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">Role</label>
+              <Input
+                defaultValue={currentUser.role}
+                placeholder="Enter your role"
+              />
+            </div>
           </div>
           <div className="mt-6">
             <Button>Save Changes</Button>

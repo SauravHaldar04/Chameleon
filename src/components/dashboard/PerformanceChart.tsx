@@ -105,11 +105,11 @@ export const PerformanceChart: React.FC = () => {
         <div className="flex items-center justify-center space-x-6 mt-4">
           <div className="flex items-center">
             <div className="w-3 h-3 bg-primary-500 rounded-full mr-2"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-400">Click-through Rate (%)</span>
+            <span className="text-sm text-secondary-600 dark:text-secondary-400">Click-through Rate (%)</span>
           </div>
           <div className="flex items-center">
             <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-            <span className="text-sm text-gray-600 dark:text-gray-400">Conversions</span>
+            <span className="text-sm text-secondary-600 dark:text-secondary-400">Conversions</span>
           </div>
         </div>
       </CardContent>

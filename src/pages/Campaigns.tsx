@@ -9,13 +9,13 @@ export const Campaigns: React.FC = () => {
   const getStatusVariant = (status: string) => {
     switch (status) {
       case 'Active':
-        return 'success' as const;
+        return 'default' as const;
       case 'Paused':
-        return 'warning' as const;
+        return 'secondary' as const;
       case 'Completed':
-        return 'neutral' as const;
+        return 'outline' as const;
       default:
-        return 'neutral' as const;
+        return 'secondary' as const;
     }
   };
 
@@ -81,28 +81,28 @@ export const Campaigns: React.FC = () => {
                       </div>
                     </td>
                     <td className="py-3 px-4">
-                      <Badge variant={getStatusVariant(campaign.status)} size="sm">
+                      <Badge variant={getStatusVariant(campaign.status)}>
                         {campaign.status}
                       </Badge>
                     </td>
-                    <td className="py-3 px-4 font-medium text-gray-900 dark:text-gray-100">
+                    <td className="py-3 px-4 font-medium text-secondary-900 dark:text-secondary-100">
                       {formatCurrency(campaign.budget)}
                     </td>
                     <td className="py-3 px-4">
                       <div className="text-sm">
-                        <div className="font-medium text-gray-900 dark:text-gray-100">{formatCurrency(campaign.spent)}</div>
-                        <div className="text-gray-500 dark:text-gray-400">
+                        <div className="font-medium text-secondary-900 dark:text-secondary-100">{formatCurrency(campaign.spent)}</div>
+                        <div className="text-secondary-500 dark:text-secondary-400">
                           {((campaign.spent / campaign.budget) * 100).toFixed(1)}% used
                         </div>
                       </div>
                     </td>
-                    <td className="py-3 px-4 font-medium text-gray-900 dark:text-gray-100">
+                    <td className="py-3 px-4 font-medium text-secondary-900 dark:text-secondary-100">
                       {formatNumber(campaign.impressions)}
                     </td>
-                    <td className="py-3 px-4 font-medium text-gray-900 dark:text-gray-100">
+                    <td className="py-3 px-4 font-medium text-secondary-900 dark:text-secondary-100">
                       {campaign.ctr.toFixed(1)}%
                     </td>
-                    <td className="py-3 px-4 font-medium text-gray-900 dark:text-gray-100">
+                    <td className="py-3 px-4 font-medium text-secondary-900 dark:text-secondary-100">
                       {campaign.conversions}
                     </td>
                     <td className="py-3 px-4">

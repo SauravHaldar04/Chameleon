@@ -23,16 +23,16 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>('light');
+  const [theme, setThemeState] = useState<Theme>('dark');
 
   useEffect(() => {
-    // Check for saved theme in localStorage or system preference
+    // Check for saved theme in localStorage or default to dark
     const savedTheme = localStorage.getItem('chameleon-theme') as Theme;
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme) {
       setThemeState(savedTheme);
-    } else if (systemPrefersDark) {
+    } else {
+      // Default to dark mode
       setThemeState('dark');
     }
   }, []);

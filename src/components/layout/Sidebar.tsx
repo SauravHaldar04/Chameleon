@@ -7,16 +7,18 @@ import {
   ChartBarIcon,
   CogIcon,
   SunIcon,
-  MoonIcon
+  MoonIcon,
+  CloudArrowUpIcon
 } from '@heroicons/react/24/outline';
 import { useTheme } from '../../contexts/ThemeContext';
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
-  { name: 'Campaigns', href: '/campaigns', icon: MegaphoneIcon },
-  { name: 'Creative Library', href: '/creatives', icon: PhotoIcon },
-  { name: 'Analytics', href: '/analytics', icon: ChartBarIcon },
-  { name: 'Settings', href: '/settings', icon: CogIcon },
+  { name: 'Dashboard', href: '/app/dashboard', icon: HomeIcon },
+  { name: 'Campaigns', href: '/app/campaigns', icon: MegaphoneIcon },
+  { name: 'Creative Library', href: '/app/creatives', icon: PhotoIcon },
+  { name: 'Upload Creative', href: '/app/creatives/upload', icon: CloudArrowUpIcon },
+  { name: 'Analytics', href: '/app/analytics', icon: ChartBarIcon },
+  { name: 'Settings', href: '/app/settings', icon: CogIcon },
 ];
 
 export const Sidebar: React.FC = () => {
