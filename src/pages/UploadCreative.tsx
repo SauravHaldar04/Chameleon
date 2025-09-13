@@ -61,7 +61,7 @@ export const UploadCreative: React.FC = () => {
 
   const handleLogoUpload = () => {
     // Simulate upload - use Coca Cola logo (you can replace with actual logo path)
-    setUploadedLogo('/src/images/coke-original.png');
+    setUploadedLogo(cokeOriginal);
     setBrandName('Coca-Cola');
   };
 
