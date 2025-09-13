@@ -1,3 +1,6 @@
+// Import a placeholder image for the avatar
+import cokeOriginal from '../images/coke-original.png';
+
 export interface User {
   id: string;
   name: string;
@@ -13,5 +16,5 @@ export const currentUser: User = {
   email: 'sarah.chen@advertiser.com',
   company: 'Global Advertising Agency',
   role: 'Campaign Manager',
-  avatar: '/images/avatar-sarah.jpg'
+  avatar: cokeOriginal
 };

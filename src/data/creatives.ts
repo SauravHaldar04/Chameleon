@@ -57,7 +57,7 @@ export const creatives: Creative[] = [
       copy: 'Ice Cold Coca-Cola. The Perfect Refreshment.'
     },
     brandGuidelines: {
-      logoUrl: '/images/coca-cola-logo.png',
+      logoUrl: cokeOriginal,
       colorPalette: ['#FF0000', '#FFFFFF', '#000000'],
       approvedFonts: ['Spencerian', 'Helvetica', 'Arial']
     },
@@ -104,7 +104,7 @@ export const creatives: Creative[] = [
       copy: 'Just Do It. Air Max Revolution.'
     },
     brandGuidelines: {
-      logoUrl: '/images/nike-logo.png',
+      logoUrl: nikeOriginal,
       colorPalette: ['#000000', '#FFFFFF', '#FF6B35'],
       approvedFonts: ['Nike Futura', 'Helvetica Bold', 'Arial Black']
     },
@@ -146,7 +146,7 @@ export const creatives: Creative[] = [
       copy: 'Music For Everyone. Spotify Premium. Ad-Free.'
     },
     brandGuidelines: {
-      logoUrl: '/images/spotify-logo.png',
+      logoUrl: spotifyOriginal,
       colorPalette: ['#1DB954', '#191414', '#FFFFFF', '#1ED760'],
       approvedFonts: ['Circular', 'Helvetica Neue', 'Arial']
     },

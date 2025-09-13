@@ -1,3 +1,9 @@
+// Import images
+import cokeOriginal from '../images/coke-original.png';
+import cokeMarathon from '../images/coke-marathon.png';
+import nikeOriginal from '../images/nike-original.png';
+import nikeFashion from '../images/nike-fashion.png';
+
 export interface AnalyticsData {
   date: string;
   impressions: number;
@@ -69,13 +75,13 @@ export const abTestResults: ABTestResult[] = [
       name: 'Original Coca-Cola Ad',
       ctr: 1.2,
       conversions: 45,
-      imageUrl: '/images/coke-original.jpg'
+      imageUrl: cokeOriginal
     },
     variationB: {
       name: 'Marathon-Optimized',
       ctr: 1.8,
       conversions: 67,
-      imageUrl: '/images/coke-marathon.jpg'
+      imageUrl: cokeMarathon
     },
     winner: 'B',
     confidence: 95,
@@ -88,13 +94,13 @@ export const abTestResults: ABTestResult[] = [
       name: 'Generic Nike Ad',
       ctr: 1.5,
       conversions: 52,
-      imageUrl: '/images/nike-original.jpg'
+      imageUrl: nikeOriginal
     },
     variationB: {
       name: 'Street Style Variant',
       ctr: 2.1,
       conversions: 73,
-      imageUrl: '/images/nike-street.jpg'
+      imageUrl: nikeFashion
     },
     winner: 'B',
     confidence: 98,
@@ -107,13 +113,13 @@ export const abTestResults: ABTestResult[] = [
       name: 'Standard iPhone Ad',
       ctr: 1.4,
       conversions: 38,
-      imageUrl: '/images/iphone-original.jpg'
+      imageUrl: nikeOriginal
     },
     variationB: {
       name: 'Tech-Focused Variant',
       ctr: 1.9,
       conversions: 51,
-      imageUrl: '/images/iphone-tech.jpg'
+      imageUrl: nikeFashion
     },
     winner: 'B',
     confidence: 92,
@@ -126,13 +132,13 @@ export const abTestResults: ABTestResult[] = [
       name: 'Standard Happy Meal',
       ctr: 1.3,
       conversions: 41,
-      imageUrl: '/images/mcdonalds-original.jpg'
+      imageUrl: cokeOriginal
     },
     variationB: {
       name: 'Family-Optimized',
       ctr: 1.7,
       conversions: 58,
-      imageUrl: '/images/mcdonalds-family.jpg'
+      imageUrl: cokeMarathon
     },
     winner: 'B',
     confidence: 89,
