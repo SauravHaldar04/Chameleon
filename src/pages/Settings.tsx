@@ -2,9 +2,11 @@ import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
-import { currentUser } from '../data/user';
+import { useAuth } from '../contexts/AuthContext';
 
 export const Settings: React.FC = () => {
+  const { user } = useAuth();
+  
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -23,7 +25,7 @@ export const Settings: React.FC = () => {
             <div>
               <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
               <Input
-                defaultValue={currentUser.name}
+                defaultValue={user ? `${user.firstName} ${user.lastName}` : ''}
                 placeholder="Enter your full name"
               />
             </div>
@@ -31,21 +33,23 @@ export const Settings: React.FC = () => {
               <label className="block text-sm font-medium text-foreground mb-2">Email Address</label>
               <Input
                 type="email"
-                defaultValue={currentUser.email}
+                defaultValue={user?.email || ''}
                 placeholder="Enter your email"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Company</label>
+              <label className="block text-sm font-medium text-foreground mb-2">
+                {user?.role === 'brand' ? 'Company' : 'Website'}
+              </label>
               <Input
-                defaultValue={currentUser.company}
-                placeholder="Enter your company name"
+                defaultValue={user?.role === 'brand' ? 'Company Name' : user?.role === 'publisher' ? 'Website Name' : ''}
+                placeholder={user?.role === 'brand' ? "Enter your company name" : "Enter your website name"}
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-foreground mb-2">Role</label>
               <Input
-                defaultValue={currentUser.role}
+                defaultValue={user?.role === 'brand' ? 'Brand Manager' : 'Publisher'}
                 placeholder="Enter your role"
               />
             </div>

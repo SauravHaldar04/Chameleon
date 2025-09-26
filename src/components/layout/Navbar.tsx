@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { BellIcon, UserCircleIcon } from '@heroicons/react/24/outline';
-import { currentUser } from '../../data/user';
+import { useAuth } from '../../contexts/AuthContext';
 
 const pageNames: Record<string, string> = {
   '/app/dashboard': 'Dashboard',
@@ -14,6 +14,7 @@ const pageNames: Record<string, string> = {
 export const Navbar: React.FC = () => {
   const location = useLocation();
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const { user, signOut } = useAuth();
   
   const pageName = pageNames[location.pathname] || 'Chameleon';
   
@@ -46,10 +47,10 @@ export const Navbar: React.FC = () => {
               </div>
               <div className="text-left">
                 <div className="text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                  {currentUser.name}
+                  {user ? `${user.firstName} ${user.lastName}` : 'User'}
                 </div>
                 <div className="text-xs text-secondary-500 dark:text-secondary-400">
-                  {currentUser.role}
+                  {user?.role === 'brand' ? 'Brand Manager' : 'Publisher'}
                 </div>
               </div>
             </button>
@@ -58,10 +59,10 @@ export const Navbar: React.FC = () => {
               <div className="absolute right-0 mt-2 w-48 bg-surface-light dark:bg-surface-dark rounded-xl shadow-lg dark:shadow-dark-lg border border-border-light dark:border-border-dark py-1 z-50 backdrop-blur-sm animate-slide-up">
                 <div className="px-4 py-3 border-b border-border-light dark:border-border-dark">
                   <div className="text-sm font-medium text-secondary-900 dark:text-secondary-100">
-                    {currentUser.name}
+                    {user ? `${user.firstName} ${user.lastName}` : 'User'}
                   </div>
                   <div className="text-sm text-secondary-500 dark:text-secondary-400">
-                    {currentUser.email}
+                    {user?.email}
                   </div>
                 </div>
                 <button className="block w-full text-left px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-800/50 transition-colors duration-200">
@@ -71,7 +72,10 @@ export const Navbar: React.FC = () => {
                   Account Settings
                 </button>
                 <div className="border-t border-border-light dark:border-border-dark">
-                  <button className="block w-full text-left px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-800/50 transition-colors duration-200">
+                  <button 
+                    onClick={signOut}
+                    className="block w-full text-left px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-800/50 transition-colors duration-200"
+                  >
                     Sign Out
                   </button>
                 </div>

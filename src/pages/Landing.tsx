@@ -222,10 +222,6 @@ const Scene = () => {
 const Landing = () => {
   const navigate = useNavigate();
 
-  const handleGetStarted = () => {
-    navigate('/app');
-  };
-
   return (
     <div className="relative w-full h-screen">
       {/* Canvas Background */}
@@ -261,14 +257,22 @@ const Landing = () => {
         </div>
       </div>
 
-      {/* Get Started Button - Bottom of page */}
+      {/* Get Started Buttons - Bottom of page */}
       <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 z-50">
-        <button
-          onClick={handleGetStarted}
-          className="px-12 py-4 border border-white/30 text-white font-light rounded-full hover:border-white/60 hover:bg-white/5 transition-all duration-300 pointer-events-auto backdrop-blur-sm text-lg tracking-wide"
-        >
-          Get Started
-        </button>
+        <div className="flex gap-4">
+          <button
+            onClick={() => navigate('/auth/signup')}
+            className="px-8 py-3 bg-white/10 border border-white/30 text-white font-medium rounded-full hover:bg-white/20 hover:border-white/60 transition-all duration-300 pointer-events-auto backdrop-blur-sm text-lg tracking-wide"
+          >
+            Get Started Free
+          </button>
+          <button
+            onClick={() => navigate('/auth/login')}
+            className="px-8 py-3 border border-white/30 text-white font-light rounded-full hover:border-white/60 hover:bg-white/5 transition-all duration-300 pointer-events-auto backdrop-blur-sm text-lg tracking-wide"
+          >
+            Sign In
+          </button>
+        </div>
       </div>
     </div>
   );

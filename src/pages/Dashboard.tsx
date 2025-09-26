@@ -42,10 +42,10 @@ export const Dashboard: React.FC = () => {
       {/* Welcome Message */}
       <div className="animate-slide-up">
         <h2 className="text-3xl font-bold text-secondary-900 dark:text-secondary-100 mb-2">
-          Welcome back! 👋
+          Dashboard 🎯
         </h2>
         <p className="text-secondary-600 dark:text-secondary-400">
-          Here's what's happening with your campaigns today.
+          Manage your campaigns and track performance metrics.
         </p>
       </div>
 
